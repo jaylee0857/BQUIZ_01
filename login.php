@@ -7,23 +7,23 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<title>卓越科技大學校園資訊系統</title>
-	<link href="./Administrator Login_files/css.css" rel="stylesheet" type="text/css">
-	<script src="./Administrator Login_files/jquery-1.9.1.min.js"></script>
-	<script src="./Administrator Login_files/js.js"></script>
+	<link href="./css/css.css" rel="stylesheet" type="text/css">
+	<script src="./js/jquery-3.4.1.js"></script>
+	<script src="./js/js.js"></script>
 </head>
 
 <body>
 	<div id="cover" style="display:none; ">
 		<div id="coverr">
 			<a style="position:absolute; right:3px; top:4px; cursor:pointer; z-index:9999;"
-				onclick="cl(&#39;#cover&#39;)">X</a>
+				onclick="cl('#cover')">X</a>
 			<div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
 		</div>
 	</div>
 	<iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
 		<a title="" href="?">
-			<div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div><!--標題-->
+			<div class="ti" style="background:url('use/'); background-size:cover;"></div><!--標題-->
 		</a>
 		<div id="ms">
 			<div id="lf" style="float:left;">
@@ -42,10 +42,10 @@
 				</marquee>
 				<div style="height:32px; display:block;"></div>
 				<!--正中央-->
-				<form method="post" action="?do=check" target="back">
+				<form method="post" action="./api/login.php">
 					<p class="t botli">管理員登入區</p>
 					<p class="cent">帳號 ： <input name="acc" autofocus="" type="text"></p>
-					<p class="cent">密碼 ： <input name="ps" type="password"></p>
+					<p class="cent">密碼 ： <input name="pw" type="password"></p>
 					<p class="cent"><input value="送出" type="submit"><input type="reset" value="清除"></p>
 				</form>
 			</div>
@@ -68,7 +68,7 @@
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
 				<!--右邊-->
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
-					onclick="lo(&#39;?do=admin&#39;)">管理登入</button>
+					onclick="lo('login.php')">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
 					<script>

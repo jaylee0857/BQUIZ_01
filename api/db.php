@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 function dd($array){
     echo "<pre>";
     print_r($array);
