@@ -10,7 +10,13 @@
                     <td></td>
                 </tr>
                 <?php
-                    $rows=$News->all();
+                    // $rows=$News->all();
+                    $total = $News->count();
+                    $div = 5;
+                    $pages = ceil($total/$div);
+                    $now=$_GET['p']??1;
+                    $start=($now - 1) * $div;
+                    $rows=$News->all(" limit $start, $div");
                     foreach($rows as $row):
                 ?>
                 <tr>
@@ -25,6 +31,24 @@
                 ?>
             </tbody>
         </table>
+        <div class="cent">
+            <?php 
+                // echo $pages;
+                if ($now > 1){
+                    $prev=$now-1;
+                    echo "<a href='?do=$do&p=$prev'> < </a>";
+                }
+                for ($i=1; $i <= $pages; $i++) { 
+                    $size = ($i==$now)?"24px":"16px";
+                    echo "<a style='font-size:$size;' href='?do=$do&p=$i'> $i </a>";
+                } 
+
+                if ($now < $pages){
+                    $next=$now+1;
+                    echo "<a href='?do=$do&p=$next'> > </a>";
+                }
+            ?>
+        </div>
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
