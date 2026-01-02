@@ -1,5 +1,5 @@
 <?php include "db.php" ;
 
-unset($_POST['admin']);
+unset($_SESSION['admin']);
 to("../index.php");
 ?>

@@ -114,7 +114,7 @@
 							var s, t;
 							if (x == 1 && nowpage - 1 >= 0) { nowpage--; }
 							// if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) { nowpage++; }
-							if (x == 2 && (nowpage+3) < <?=$Image->count(['sh'=>1]);?>) { nowpage++; }
+							if (x == 2 && (nowpage+3) < <?=$Image->count(['sh'=>1])?>) { nowpage++; }
 							// console.log(nowpage < <?=$Image->count(['sh'=>1])?>);
 							// console.log((nowpage-3));
 							$(".im").hide()
