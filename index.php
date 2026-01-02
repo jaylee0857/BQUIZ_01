@@ -11,6 +11,22 @@
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
 	<script src="./js/jquery-3.4.1.js"></script>
 	<script src="./js/js.js"></script>
+	<style>
+		.btn{
+			text-align: center;
+			margin: 5px auto;
+		}
+		.img_bb{
+			width: 150px;
+			height: 103px;
+		}
+		.im{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+		}
+	</style>
 </head>
 
 <body>
@@ -73,17 +89,41 @@
 					onclick="lo('?do=login')">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<div class="btn">
+						<img src="./icon/up.jpg" alt="" onclick="pp(1)">
+					</div>
+					<div>
+						<?php
+							$images = $Image->all(['sh'=>1]);
+							// echo $Image->count(['sh'=>1]);
+							foreach ($images as $key => $img) {
+								 
+								echo "<div id='ssaa{$key}' style='display:none;'' class='im'>";
+								echo "<img src='./upload/{$img['img']}' class='img_bb' alt=''>";
+								echo "</div>";
+							}
+						?>
+					</div>
+					<div class="btn">
+						<img src="./icon/dn.jpg" onclick="pp(2)" alt="">
+					</div>
+					<?php ?>
 					<script>
 						var nowpage = 0, num = 0;
 						function pp(x) {
 							var s, t;
 							if (x == 1 && nowpage - 1 >= 0) { nowpage--; }
-							if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) { nowpage++; }
+							// if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) { nowpage++; }
+							if (x == 2 && (nowpage+3) < <?=$Image->count(['sh'=>1]);?>) { nowpage++; }
+							// console.log(nowpage < <?=$Image->count(['sh'=>1])?>);
+							// console.log((nowpage-3));
 							$(".im").hide()
 							for (s = 0; s <= 2; s++) {
 								t = s * 1 + nowpage * 1;
 								$("#ssaa" + t).show()
 							}
+							console.log(nowpage);
+							
 						}
 						pp(1)
 					</script>
