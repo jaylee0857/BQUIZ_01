@@ -1,5 +1,5 @@
 <?php include "db.php" ?>
-
+<!-- 7張表用到 -->
 <?php 
     $table=$_GET['table'];
     $db=${ucfirst($table)};

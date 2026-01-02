@@ -63,4 +63,32 @@
             </tbody>
         </table>
     </form>
+    <a href=""></a>
 </div>
+
+<!-- <?php
+$total = $Image->count(); //總比數
+$div = 3; //幾個一頁
+$pages = ceil($total/$div); //共有幾頁
+$now=$_GET['p'] ?? 1; // 目前在第幾頁
+$start = ($now-1) * $div ;
+$rows = $Image->all(" limit $start, $div");
+?>
+<?php 
+// 目標:做出Pagination
+if($now > 1){
+    $prev = $now -1;
+    echo "<a href='?do=$do&p=$prev'> < </a>";
+}
+
+for ($i=1; $i <= $pages; $i++) { 
+    $fone_size = ($i == $now) ? "24px" : "16px";
+    echo "<a style='font-size:$fone_size;' href='?do=$do&p=$i'> $i </a>";
+}
+
+if ($now < $pages) {
+    $next = $now+1;
+    echo "<a href='?do=$do&p=$next'> < </a>";
+}
+
+?> -->
