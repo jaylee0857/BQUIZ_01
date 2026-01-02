@@ -17,9 +17,10 @@
     <!--正中央-->
     <script>
         var lin = new Array();
-        // 重點!!!!!!
         <?php
             $mvims = $Mvim->all(['sh'=>1]);
+            
+            // 重點!!!!!!
             foreach ($mvims as $mv) {
                 echo "lin.push('upload/${mv['img']}');";
             }
@@ -49,18 +50,17 @@
                 }           
             ?>
         </span>
-        <?php
-            $news = $News->all(['sh'=>1]," limit 5");
-        ?>
         <style>
             .all {
                 display: none;
             }
         </style>
+        <?php
+            $news = $News->all(['sh'=>1]," limit 5");
+        ?>
         <ul class="ssaa" style="list-style-type:decimal;">
             <?php 
                 foreach ($news as $new) {
-                    # code...
                     echo "<li>";
                     echo mb_substr($new['text'],0,20);
                     echo "<div class='all'>" . $new['text'];

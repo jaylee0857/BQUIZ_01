@@ -33,7 +33,6 @@
         </table>
         <div class="cent">
             <?php 
-                // echo $pages;
                 if ($now > 1){
                     $prev=$now-1;
                     echo "<a href='?do=$do&p=$prev'> < </a>";
