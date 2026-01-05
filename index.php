@@ -26,6 +26,29 @@
             justify-content: center;
 
 		}
+
+		.mainmu .sub{
+			display:none;
+			position: absolute;
+			z-index: 99;
+			left: 50%;
+			top: 100%;  
+			text-align:center;
+			width: 100%;
+		}
+		.mainmu:hover .sub{
+			display:block;
+		}
+		.mainmu:hover .sub a{
+			background:url(./icon/menu3.fw.png) center no-repeat;
+			display:block;
+			margin: 5px 0;
+		}
+		.mainmu .sub a:hover{
+			background:url(./icon/menu4.fw.png) center no-repeat;
+		}
+
+
 	</style>
 </head>
 
@@ -52,6 +75,25 @@
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
+					<?php
+						$mains = $Menu->all(['main_id'=>0, 'sh'=>1]);
+						foreach ($mains as $main) {
+							echo "<div class='mainmu'>";
+							echo "<a data-id='{$main['id']}' href='{$main['href']}'>";
+							echo "{$main['text']}";
+							echo "</a>";
+							if($Menu->count(['main_id'=>$main['id']>0])){
+								echo "<div class='sub'>";
+								$subs = $Menu->all(['main_id'=>$main['id']]);
+								foreach ($subs as $sub) {
+									echo "<a data-main_id='{$sub['main_id']}' href='{$sub['href']}'>{$sub['text']}</a>";
+								}
+								echo "</div>";
+							}
+							echo "</div>";
+						}
+					?>
+					
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 : <?=$Total->find(1)['total'];?>

@@ -20,7 +20,7 @@
                     <td><input type="text" name="href[<?=$row['id']?>]" value="<?=$row['href']?>"></td>
                     <td><?=$Menu->count(['main_id'=>$row['id']])?></td>
                      
-                    <td><input type="checkbox" name="sh" value="<?=$row['id']?>" <?=($row['sh'] == 1) ?"checked":""?>></td>
+                    <td><input type="checkbox" name="sh[]" value="<?=$row['id']?>" <?=($row['sh'] == 1) ?"checked":""?>></td>
                     <td><input type="checkbox" name="del[]" id="" value="<?=$row['id']?>"></td>
                     <td><input type="button" value="編輯次選單" onclick="op('#cover','#cvr','./modal/submenu.php?table=<?=$do?>&id=<?=$row['id']?>')"></td>
                 </tr>
