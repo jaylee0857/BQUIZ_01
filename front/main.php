@@ -22,7 +22,7 @@
             
             // 重點!!!!!!
             foreach ($mvims as $mv) {
-                echo "lin.push('upload/${mv['img']}');";
+                echo "lin.push('upload/{$mv['img']}');";
             }
             ?>
         var now = 0;

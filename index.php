@@ -77,6 +77,7 @@
 					<span class="t botli">主選單區</span>
 					<?php
 						$mains = $Menu->all(['main_id'=>0, 'sh'=>1]);
+						
 						foreach ($mains as $main) {
 							echo "<div class='mainmu'>";
 							echo "<a data-id='{$main['id']}' href='{$main['href']}'>";
@@ -142,7 +143,7 @@
 							// echo $Image->count(['sh'=>1]);
 							foreach ($images as $key => $img) {
 								 
-								echo "<div id='ssaa{$key}' style='display:none;'' class='im'>";
+								echo "<div id='ssaa{$key}' class='im'>";
 								echo "<img src='./upload/{$img['img']}' class='img_bb' alt=''>";
 								echo "</div>";
 							}
