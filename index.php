@@ -11,6 +11,19 @@
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
 	<script src="./js/jquery-3.4.1.min.js"></script>
 	<script src="./js/js.js"></script>
+	<style>
+
+		.imgbox {
+
+			width: 153px;
+			margin: auto;
+
+		}
+		.imgbox img{
+			width: 153px;
+			height: 103px;
+		}
+	</style>
 </head>
 
 <body>
@@ -58,8 +71,26 @@
 					onclick="lo('?do=login')">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<div class="cent">
+						<img src="./icon/up.jpg" alt="" onclick="pp(1)">
+					</div>
+
+					<div class="imgbox">
+					<?php
+						$images = $Image->all(['sh'=>1]);
+						foreach ($images as $key=> $image) :
+					?>
+					<img id="ssaa<?=$key?>" class="im" src="./upload/<?=$image['img']?>" alt="">
+					<?php
+					endforeach
+					?>
+					</div>
+
+					<div class="cent">
+						<img src="./icon/dn.jpg" alt="" onclick="pp(2)">
+					</div>
 					<script>
-						var nowpage = 0, num = 0;
+						var nowpage = 0, num = <?=count($images)?>;
 						function pp(x) {
 							var s, t;
 							if (x == 1 && nowpage - 1 >= 0) { nowpage--; }
