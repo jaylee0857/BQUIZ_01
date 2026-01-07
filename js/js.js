@@ -24,8 +24,6 @@ function op(x,y,url)
 	$(y).fadeIn()
 	if(y&&url)
 	$(y).load(url)
-	console.log(url);
-
 }
 function cl(x)
 {

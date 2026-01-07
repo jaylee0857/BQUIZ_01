@@ -1,49 +1,73 @@
-<!-- cent css.css附帶的 -->
 <?php include_once "../api/db.php" ?>
 
-<div class="cent"> 編輯次選單
-</div>
+<div class="cent">編輯次選單</div>
 <hr>
-<form action="./api/submenu.php?main_id=<?=$_GET['id']?>" method="post" enctype="multipart/form-data">
-    <table id="subList" style="margin:auto;">
-        <tr>
-            <td>次選單名稱</td>
-            <td>次選單連結網址</td>
+<style>
+    #box tr{
+        display: flex;
+        justify-content: space-between;
+    }
+    .ccc{
+        display: flex;
+        justify-content: space-between;
+    }
+
+</style>
+<form action="../api/submenu.php?table=<?=$_GET['table']?>" method="post" enctype="multipart/form-data">
+    <table id="box" style="width: 65%; margin: auto;">
+        <tr class="ccc">
+            <td width="30%">次選單名稱</td>
+            <td width="30%">次選單連結網址</td>
             <td>刪除</td>
         </tr>
-        <?php
-            $subs=$Menu->all(['main_id'=>$_GET['id']]);
-            foreach($subs as $sub):
+        <?php 
+            $main_id = $_GET['main_id'];
+            $rows = $Menu->all(['main_id'=>$main_id]);
+            foreach ($rows as $row) :
         ?>
         <tr>
-            <td><input type="text" name="text[<?=$sub['id']?>]" value="<?=$sub['text']?>"></td>
-            <td><input type="text" name="href[<?=$sub['id']?>]" value="<?=$sub['href']?>"></td>
-            <td><input type="checkbox" name="del[]" value="<?=$sub['id']?>" id=""></td>
+            <td>
+                <input type="text" name="text[<?=$row['id']?>]" value="<?=$row['text']?>">
+            </td>
+            <td>
+                <input type="text" name="href[<?=$row['id']?>]" value="<?=$row['href']?>">
+            </td>
+            <td>
+                <input type="checkbox" name="del[]" value="<?=$row['id']?>">
+                <input type="hidden" name="id[]" value="<?=$row['id']?>">
+            </td>
+        </tr>
+        <?php 
+            endforeach;
+        ?>
 
-        </tr>
-        <?php endforeach; ?>
     </table>
-    <table>
-        <div class="cent">
-            <input type="submit" value="修改確定">
-            <input type="reset" value="重製">
-            <input type="button" value="更多次選單" onclick="more()">
-        </tr>
-        </div>
-    </table>
+    <div class="cent">
+        <input type="submit" value="新增">
+        <input type="hidden" name="main_id" value="<?=$_GET['main_id'] ?>">
+        <input type="reset" value="重製">
+        <input type="button" value="更多次選單" onclick="more()">
+    </div>
 </form>
 
 <script>
+    function more(){
 
-    function more() {
-        let row=`
+        $row = `
         <tr>
-            <td><input type="text" name="new_text[]" id=""></td>
-            <td><input type="text" name="new_href[]" id="" value=""></td>
+        <td>
+            <input type="text" name="text2[]" value="">
+        </td>
+        <td>
+            <input type="text" name="href2[]" value="">
+        </td>
+        <td>
+            <input type="checkbox" name="del[]">
+        </td>
         </tr>
-        `;
-        $('#subList').append(row);
-    }
 
+        `
+        $('#box').append($row);
+    }
 
 </script>

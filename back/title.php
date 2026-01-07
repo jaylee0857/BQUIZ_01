@@ -12,20 +12,30 @@
                 </tr>
                 <?php
                     $rows=$Title->all();
-                    foreach($rows as $row):
+                    foreach ($rows as $row) :
                 ?>
                 <tr>
-                    <td width="45%">
-                        <img style="width: 300px;height: 30px;" src="./upload/<?=$row['img']?>" alt="">
-                        <!-- <input type="hidden" name="id[]" value="<?=$row['id']?>"> -->
+                    <td >
+                        <img width="300px" height="30px" src="../upload/<?=$row['img']?>" alt="" name="img[<?=$row['id']?>]">
                     </td>
-                    <td width="23%"><input type="text" name="text[<?=$row['id']?>]" value="<?=$row['text']?>"></td>
-                    <td width="7%"><input type="radio" name="sh" value="<?=$row['id']?>" <?=($row['sh'] == 1) ?"checked":""?>></td>
-                    <td width="7%"><input type="checkbox" name="del[]" id="" value="<?=$row['id']?>"></td>
-                    <td><input type="button" value="更新圖片" onclick="op('#cover','#cvr','./modal/update.php?table=<?=$do?>&id=<?=$row['id']?>')"></td>
+                    <td >
+                        <input type="text" value="<?=$row['text']?>" name="text[<?=$row['id']?>]">
+                    </td>
+                    <td >
+                        <input type="radio" name="sh" value="<?=$row['id']?>" <?=($row['sh'] == 1)?'checked':'';?>>
+                    </td>
+                    <td >
+                        <input type="checkbox" name="del[<?=$row['id']?>]" value="<?=$row['id']?>">
+                    </td>
+                    <td>
+                        <input type="hidden" name="id[]" value="<?=$row['id']?>">
+                        <input type="button"
+                            onclick="op('#cover','#cvr','./modal/update.php?table=<?=$do?>&id=<?=$row['id']?>')"
+                            value="更新圖片">
+                    </td>
                 </tr>
                 <?php
-                    endforeach;
+                    endforeach;                
                 ?>
             </tbody>
         </table>
@@ -40,5 +50,6 @@
                 </tr>
             </tbody>
         </table>
+
     </form>
 </div>

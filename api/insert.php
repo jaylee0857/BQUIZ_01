@@ -1,30 +1,30 @@
-<?php include "db.php" ?>
-<!-- 7張表用到 -->
-<?php 
-    $table=$_GET['table'];
-    $db=${ucfirst($table)};
-    if(!empty($_FILES['img']['tmp_name'])){
-        // 如果不是空的
-        move_uploaded_file($_FILES['img']['tmp_name'],"../upload/".$_FILES['img']['name']);
-        $_POST['img'] = $_FILES['img']['name'];
-        // move_uploaded_file()
-    }
-    // $count_sh = $title->count(['sh'=>1]);
+<?php
+include_once "db.php";
+$table=$_GET['table'];
+$db=${ucfirst($table)};
+// dd($_FILES['img']);
+//     [name] => 01B02.jpg
+//     [full_path] => 01B02.jpg
+//     [type] => image/jpeg
+//     [tmp_name] => C:\xampp\tmp\phpC0B9.tmp
+//     [error] => 0
+//     [size] => 58904
+if (!empty($_FILES['img'])) {
+    # code...
+    move_uploaded_file($_FILES['img']['tmp_name'],"../upload/{$_FILES['img']['name']}");
+    $_POST['img'] = $_FILES['img']['name'];
+}
 
-    switch ($table) {
-        case 'title':
-            $_POST['sh'] = ($db->count(['sh'=>1]) ==0)?1:0;
-            // 注意大小寫的title變數是因為用DB所以要大寫
-            break;
-        case 'admin':
-            break;
-        default:
-            $_POST['sh'] = 1;
-            break;
-    }
-
-    dd($_POST);
-    $db->save($_POST);
-
-    to("../backend.php?do=$table");
+switch ($table) {
+    case 'title':
+        $_POST['sh'] = 0;
+        break;
+    case 'admin':
+        break;
+    default:
+        $_POST['sh'] = 1;
+        break;
+}
+$db->save($_POST);
+to("../back.php?do=$table");
 ?>

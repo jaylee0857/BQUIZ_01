@@ -5,22 +5,31 @@
             <tbody>
                 <tr class="yel">
                     <td width="45%">帳號</td>
-                    <td width="45%">密碼</td>
-                    <td >刪除</td>
+                    <td width="23%">密碼</td>
+                    <td width="7%">刪除</td>
                     <td></td>
                 </tr>
                 <?php
                     $rows=$Admin->all();
-                    foreach($rows as $row):
+                    foreach ($rows as $row) :
                 ?>
                 <tr>
-                    <td><input type="text" name="acc[<?=$row['id']?>]" value="<?=$row['acc']?>"></td>
-                    <td><input type="password" name="pw[<?=$row['id']?>]" value="<?=$row['pw']?>"></td>
 
-                    <td><input type="checkbox" name="del[]" id="" value="<?=$row['id']?>"></td>
+                    <td >
+                        <input type="text" value="<?=$row['acc']?>" name="acc[<?=$row['id']?>]">
+                    </td>
+                    <td >
+                        <input type="password" value="<?=$row['pw']?>" name="pw[<?=$row['id']?>]">
+                    </td>
+                    <td >
+                        <input type="checkbox" name="del[<?=$row['id']?>]" value="<?=$row['id']?>">
+                    </td>
+                    <td>
+                        <input type="hidden" name="id[]" value="<?=$row['id']?>">
+                    </td>
                 </tr>
                 <?php
-                    endforeach;
+                    endforeach;                
                 ?>
             </tbody>
         </table>
@@ -29,11 +38,12 @@
                 <tr>
                     <td width="200px"><input type="button"
                             onclick="op('#cover','#cvr','./modal/<?=$do?>.php?table=<?=$do?>')"
-                            value="新增管理者帳號"></td>
+                            value="新增管理這帳號"></td>
                     <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置">
                     </td>
                 </tr>
             </tbody>
         </table>
+
     </form>
 </div>

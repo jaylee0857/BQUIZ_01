@@ -1,25 +1,17 @@
-<!-- cent css.css附帶的 -->
-<div class="cent"> 
-    新增管理者帳號
-</div>
+<div class="cent">新增標題區圖片</div>
 <hr>
-<form action="./api/insert.php?table=<?=$_GET['table']?>" method="post" enctype="multipart/form-data">
-    <table style="margin:auto;">
-        <tr>
-            <td>帳號</td>
-            <td><input type="text" name="acc" id=""></td>
-        </tr>
-        <tr>
-            <td>密碼</td>
-            <td><input type="password" name="pw" id="" value=""></td>
-        </tr>
-        <tr>
-            <td>確認密碼</td>
-            <td><input type="password"></td>
-        </tr>
-        <tr>
-            <td><input type="submit" value="新增"><input type="reset" value="重製"></td>
-            <td></td>
-        </tr>
-    </table>
+<form action="../api/insert.php?table=<?=$_GET['table']?>" method="post" enctype="multipart/form-data">
+    <div class="cent">
+        帳號：<input type="text" name="acc">
+    </div>
+    <div class="cent">
+        密碼：<input type="password" name="pw">
+    </div>
+    <div class="cent">
+        確認密碼：<input type="password" >
+    </div>
+    <div class="cent">
+        <input type="submit" value="新增">
+        <input type="reset" value="重製">
+    </div>
 </form>
