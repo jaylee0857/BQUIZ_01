@@ -23,6 +23,10 @@
 			width: 153px;
 			height: 103px;
 		}
+
+		.submenu{
+
+		}
 	</style>
 </head>
 
@@ -47,6 +51,27 @@
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
+						<?php
+							$menus = $Menu->all(['sh'=>1,'main_id'=>0]);
+							foreach ($menus as $menu ) :
+						?>
+						<div class="mainmu cent">
+							<a href="<?=$menu['href']?>"><?=$menu['text']?></a>
+							<?php 
+								$subs = $Menu->all(['sh'=>1,'main_id'=>$menu['id']]);
+								if (count($subs) > 0) {
+									echo "<div class='mainmu2'>";
+									foreach ($subs as $sub) {
+										echo "<a href='{$sub['href']}'> {$sub['text']} </a>";
+									}
+									echo "</div>";
+								}
+							?>
+								
+						</div>
+						<?php
+							endforeach;
+						?>
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :
