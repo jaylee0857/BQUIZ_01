@@ -155,4 +155,10 @@ $News = new DB('news');
 $Admin = new DB('admin');
 $Menu = new DB('menu');
 
+if (!isset($_SESSION['visit'])) {
+    $_SESSION['visit'] = $Total->find(1);
+    $t = $_SESSION['visit']['total']+1;
+    $Total->save(['id'=>1,'total'=>$t]);
+}
+
 ?>
