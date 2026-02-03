@@ -38,7 +38,11 @@
             }
             ww();
         </script>
-
+    <style>
+        .all{
+            display:none;
+        }
+    </style>
         <div
             style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
             <span class="t botli">最新消息區
@@ -53,9 +57,9 @@
                 <?php
                     $rows = $News->all(['sh'=>1]," limit 5");
                     foreach ($rows as $row) {
-                        echo "<li>";
+                        echo "<li>".mb_substr($row['text'],0,20);
                         echo "<div class='all'>";
-                        echo mb_substr($row['text'],0,20);
+                        echo $row['text'];
                         echo "</div>";
                         echo "</li>";
                     }

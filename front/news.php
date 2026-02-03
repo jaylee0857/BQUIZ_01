@@ -18,10 +18,10 @@
         <?php
             $div=5;
             $now=$_GET['p'] ?? 1;
-            $total=$News->count();
+            $total=$News->count(['sh'=>1]);
             $pages=ceil($total/$div);
             $start = $div * ($now -1);
-            $rows=$News->all(" limit $start,$div");
+            $rows=$News->all(['sh'=>1]," limit $start,$div");
         ?>
         <ol start="<?=$start+1?>" style="list-style-type:decimal;">
         <?php

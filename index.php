@@ -60,9 +60,9 @@
 							<?php 
 								$subs = $Menu->all(['sh'=>1,'main_id'=>$menu['id']]);
 								if (count($subs) > 0) {
-									echo "<div class='mainmu2'>";
+									echo "<div class='box'>";
 									foreach ($subs as $sub) {
-										echo "<a href='{$sub['href']}'> {$sub['text']} </a>";
+										echo "<a class='mainmu2' href='{$sub['href']}'> {$sub['text']} </a>";
 									}
 									echo "</div>";
 								}

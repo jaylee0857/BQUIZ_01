@@ -81,18 +81,22 @@ body
 	background:url(../icon/menu2.fw.png) center no-repeat;
 	background-size:cover;
 }
-.mainmu:hover .mainmu2
+.mainmu:hover .box
 {
 	display: block;
 
 }
-.mainmu2
-{	
+
+.box{
 	display: none;
 	position:absolute;
 	top: 50%;
 	right: 0;
 	z-index: 99;
+}
+.mainmu2
+{	
+	display: block;
 	border-radius:10px;
 	background:url(../icon/menu3.fw.png)center no-repeat;
 	background-size:100% 100%;

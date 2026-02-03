@@ -4,7 +4,7 @@
 dd($_POST);
 if (!empty($_POST['text2'])) {
     foreach ($_POST['text2'] as $key => $text) {
-        $href = $_POST['text2'][$key];
+        $href = $_POST['href2'][$key];
         $Menu->save(['href'=>$href,'text'=>$text,"main_id"=>$_POST['main_id']]);
     }
 }
